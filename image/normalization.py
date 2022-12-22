@@ -23,7 +23,7 @@ class NormalizeImageDict(object):
     def __call__(self, sample):
         for key in self.image_keys:
             if self.normalizeRange:
-                sample[key] /= 255.0                
+                sample[key] /= 255.0
             sample[key] = self.normalize(sample[key])
         return sample
 
@@ -34,7 +34,7 @@ def normalize_image(image, forward=True,
 
         mean = list(mean)
         std = list(std)
-
+        
         im_size = image.size()
         mean = torch.FloatTensor(mean).unsqueeze(1).unsqueeze(2)
         std = torch.FloatTensor(std).unsqueeze(1).unsqueeze(2)

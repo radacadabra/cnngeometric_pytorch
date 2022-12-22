@@ -10,3 +10,28 @@ matplotlib
 requests
 tensorboard
 click
+
+pytorch and torchvision on fastchan
+everything else on conda-forge
+
+conda install -c fastchan pytorch torchvision opencv scikit-learn scikit-image pandas numpy matplotlib requests click tqdm
+conda install -c conda-forge tensorboard
+conda install jupyter notebook
+
+
+
+conda update ffmpeg
+
+conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 opencv scikit-learn scikit-image pandas numpy matplotlib requests click tqdm -c pytorch -c fastchan
+
+conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 opencv scikit-learn scikit-image pandas numpy matplotlib requests click tqdm -c pytorch -c fastchan
+
+conda install pytorch==1.8.1 torchvision==0.9.1 cudatoolkit=11.3 opencv scikit-learn scikit-image pandas numpy matplotlib requests click tqdm -c pytorch -c conda-forge -c fastchan
+-----torch not compiled with cuda enabled
+print(torch.cuda.is_available()) 
+----- False
+
+
+
+
+

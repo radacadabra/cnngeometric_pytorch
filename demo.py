@@ -54,10 +54,10 @@ download_PF_willow('datasets/')
 # Create model
 print('Creating CNN model...')
 if do_aff:
-    model_aff = CNNGeometric(use_cuda=use_cuda, geometric_model='affine',
+    model_aff = CNNGeometric(use_cuda=use_cuda, output_dim=6,
                              feature_extraction_cnn=args.feature_extraction_cnn)
 if do_tps:
-    model_tps = CNNGeometric(use_cuda=use_cuda, geometric_model='tps',
+    model_tps = CNNGeometric(use_cuda=use_cuda, output_dim=18,
                              feature_extraction_cnn=args.feature_extraction_cnn)
 
 # Load trained weights

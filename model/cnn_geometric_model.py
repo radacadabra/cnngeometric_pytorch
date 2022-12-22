@@ -72,9 +72,18 @@ class FeatureExtraction(torch.nn.Module):
             self.model = self.model.cuda()
         
     def forward(self, image_batch):
+        #print('>>>>>>>>>>>>>>>>>>>>>>>>Batch shape:')
+        #print(image_batch.shape)
+        #image_batch_cpu=image_batch.cpu()        
+        #np.save('image_batch.npy', image_batch_cpu)
+        #print(image_batch[0, 0, 120, 120])
         features = self.model(image_batch)
+        #print('>>>>>>>>>>>>>>>>>>>>>>>>Features shape:')
+        #print(features.shape)
         if self.normalization:
             features = featureL2Norm(features)
+        #print('>>>>>>>>>>>>>>>>>>>>>>>>Features shape post normalisation:')
+        #print(features.shape)
         return features
     
 class FeatureCorrelation(torch.nn.Module):
@@ -107,7 +116,13 @@ class FeatureCorrelation(torch.nn.Module):
             
             if self.normalization:
                 correlation_tensor = featureL2Norm(self.ReLU(correlation_tensor))
-        
+
+            print(feature_A[:,:,0].sum())
+
+            correlation_tensor_cpu=correlation_tensor.cpu()        
+            np.save('output_correlation_00-71.npy', correlation_tensor_cpu)
+            print("done")
+
             return correlation_tensor
 
         if self.matching_type=='subtraction':
@@ -139,6 +154,9 @@ class FeatureRegression(nn.Module):
         x = self.conv(x)
         x = x.contiguous().view(x.size(0), -1)
         x = self.linear(x)
+
+        print('test')
+
         return x
     
     

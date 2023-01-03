@@ -35,12 +35,6 @@ def train(epoch, model, loss_fn, optimizer,
         else:
             loss = loss_fn(theta, tnf_batch['theta_GT'])
 
-        # print('>>>>>>>>>>>>>>>>>>>>>>> theta:')
-        # print(theta)
-        # print('>>>>>>>>>>>>>>>>>>>>>>> theta GT')
-        # print(tnf_batch['theta_GT'])
-        
-
         loss.backward()
         optimizer.step()
 

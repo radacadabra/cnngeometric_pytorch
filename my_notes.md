@@ -1,3 +1,3 @@
 
 
-python train_strong.py --geometric-model affine --training-dataset pascal --dataset-image-path '~/tracking/datasets/sunrgbd/' --dataset-csv-path '~/tracking/datasets/sunrgbd/split_cnngeom' --num-epochs 20
+python train.py --geometric-model affine --training-dataset pascal --dataset-image-path '~/tracking/datasets/pascal-voc11/' --dataset-csv-path '~/tracking/datasets/pascal-random' --num-epochs 20

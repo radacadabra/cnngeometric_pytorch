@@ -130,23 +130,14 @@ class SynthDataset(Dataset):
         
         # permute order of image to CHW
         image = image.transpose(1,2).transpose(0,1)
-
-        #print("Before bilinear sampling:")
-        #print(image[0, 120, 120])
         
         # Resize image using bilinear sampling with identity affine tnf
         if image.size()[0]!=self.out_h or image.size()[1]!=self.out_w:
             image = self.affineTnf(Variable(image.unsqueeze(0),requires_grad=False)).data.squeeze(0)
                 
         sample = {'image': image, 'theta': theta}
-
-        #print("In:")
-        #print(sample['image'][0, 120, 120])
         
         if self.transform:
             sample = self.transform(sample)
-
-        #print("Out:")
-        #print(sample['image'][0, 120, 120])
 
         return sample
